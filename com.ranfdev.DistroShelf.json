@@ -1,14 +1,14 @@
 {
-    "id" : "com.ranfdev.DistroShelf",
-    "runtime" : "org.gnome.Platform",
-    "runtime-version" : "48",
-    "sdk" : "org.gnome.Sdk",
-    "sdk-extensions" : [
+    "id": "com.ranfdev.DistroShelf",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "48",
+    "sdk": "org.gnome.Sdk",
+    "sdk-extensions": [
         "org.freedesktop.Sdk.Extension.rust-stable",
         "org.freedesktop.Sdk.Extension.llvm19"
     ],
-    "command" : "distroshelf",
-    "finish-args" : [
+    "command": "distroshelf",
+    "finish-args": [
         "--share=network",
         "--share=ipc",
         "--socket=fallback-x11",
@@ -16,23 +16,23 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.Flatpak"
     ],
-    "build-options" : {
+    "build-options": {
         "prepend-path": "/app/bin:/usr/bin",
-        "append-path" : "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm19/bin",
+        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm19/bin",
         "config-opts": [
             "-Dbuildtype=release",
             "-Doffline=true"
         ],
-        "env" : {
-            "RUST_BACKTRACE" : "1",
-            "RUST_LOG" : "distroshelf=debug",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER" : "clang",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER" : "clang",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS" : "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS" : "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+        "env": {
+            "RUST_BACKTRACE": "1",
+            "RUST_LOG": "distroshelf=debug",
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
+            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
         }
     },
-    "cleanup" : [
+    "cleanup": [
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -43,16 +43,22 @@
         "*.la",
         "*.a"
     ],
-    "modules" : [
+    "modules": [
         {
-            "name" : "distroshelf",
-            "builddir" : true,
-            "buildsystem" : "meson",
-            "sources" : [
+            "name": "distroshelf",
+            "builddir": true,
+            "buildsystem": "meson",
+            "sources": [
                 {
-                    "type" : "archive",
+                    "type": "archive",
                     "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.0.2/distroshelf-1.0.2.tar.xz",
-                    "sha256": "d910200eac15586597bb417a09724fadea31327ba7ceea861e2689c9ada1fdb9"
+                    "sha256": "d910200eac15586597bb417a09724fadea31327ba7ceea861e2689c9ada1fdb9",
+                    "x-checker-data": {
+                        "type": "json",
+                        "url": "https://api.github.com/repos/ranfdev/DistroShelf/releases/latest",
+                        "version-query": ".tag_name | sub(\"^v\"; \"\")",
+                        "url-query": ".assets[] | select(.name==\"distroshelf-\" + $version + \".tar.xz\") | .browser_download_url"
+                    }
                 }
             ]
         }
