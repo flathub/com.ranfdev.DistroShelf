@@ -50,6 +50,23 @@
             "buildsystem": "meson",
             "sources": [
                 {
+                    "name": "vte",
+                    "buildsystem": "meson",
+                    "config-opts": [
+                        "-Ddocs=false",
+                        "-Dgtk3=false",
+                        "-Dgtk4=true",
+                        "--libdir=lib"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "https://download.gnome.org/sources/vte/0.82/vte-0.82.1.tar.xz",
+                            "sha256": "79376d70402d271e2d38424418e1aea72357934d272e321e3906b71706a78e3a"
+                        }
+                    ]
+                },
+                {
                     "type": "archive",
                     "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.1.0/distroshelf-1.1.0.tar.xz",
                     "sha256": "8dc283f7602d64a79805aaad7fd3b9a7659c395c0663e008378af4c31347aa41",
