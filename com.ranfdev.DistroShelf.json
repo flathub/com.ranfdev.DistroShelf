@@ -20,8 +20,7 @@
         "prepend-path": "/app/bin:/usr/bin",
         "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
         "config-opts": [
-            "-Dbuildtype=release",
-            "-Doffline=true"
+            "-Dbuildtype=release"
         ],
         "env": {
             "RUST_BACKTRACE": "1",
@@ -33,6 +32,8 @@
         }
     },
     "cleanup": [
+        "/bin/vte-2.91-gtk4",
+        "/libexec/vte-urlencode-cwd",
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -65,6 +66,9 @@
             "name": "distroshelf",
             "builddir": true,
             "buildsystem": "meson",
+            "config-opts": [
+                "-Doffline=true"
+            ],
             "sources": [
                 {
                     "type": "archive",
