@@ -20,8 +20,7 @@
         "prepend-path": "/app/bin:/usr/bin",
         "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
         "config-opts": [
-            "-Dbuildtype=release",
-            "-Doffline=true"
+            "-Dbuildtype=release"
         ],
         "env": {
             "RUST_BACKTRACE": "1",
@@ -33,6 +32,8 @@
         }
     },
     "cleanup": [
+        "/bin/vte-2.91-gtk4",
+        "/libexec/vte-urlencode-cwd",
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -45,14 +46,34 @@
     ],
     "modules": [
         {
-            "name": "distroshelf",
-            "builddir": true,
+            "name": "vte",
             "buildsystem": "meson",
+            "config-opts": [
+                "-Ddocs=false",
+                "-Dgtk3=false",
+                "-Dgtk4=true",
+                "--libdir=lib"
+            ],
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.0.15/distroshelf-1.0.15.tar.xz",
-                    "sha256": "797958fe866d6fcc14cde42f17314bf5635d62a64a54fc5ece9100e6d923ace9",
+                    "url": "https://download.gnome.org/sources/vte/0.82/vte-0.82.1.tar.xz",
+                    "sha256": "79376d70402d271e2d38424418e1aea72357934d272e321e3906b71706a78e3a"
+                }
+            ]
+        },
+        {
+            "name": "distroshelf",
+            "builddir": true,
+            "buildsystem": "meson",
+            "config-opts": [
+                "-Doffline=true"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.1.0/distroshelf-1.1.0.tar.xz",
+                    "sha256": "8dc283f7602d64a79805aaad7fd3b9a7659c395c0663e008378af4c31347aa41",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ranfdev/DistroShelf/releases/latest",
