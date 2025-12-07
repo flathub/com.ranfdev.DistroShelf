@@ -72,8 +72,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.2.0/distroshelf-1.2.0.tar.xz",
-                    "sha256": "17848855f8979b827078ee2ecc78f6fdc70022e518d08de88050c86b94e258c9",
+                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.3.0/distroshelf-1.3.0.tar.xz",
+                    "sha256": "d07a02dd01b0a149348a7b16351b35d7c0bde18f1bad30ee1216959a32aea0f8",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ranfdev/DistroShelf/releases/latest",
