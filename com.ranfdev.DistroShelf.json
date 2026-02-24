@@ -16,24 +16,7 @@
         "--socket=wayland",
         "--talk-name=org.freedesktop.Flatpak"
     ],
-    "build-options": {
-        "prepend-path": "/app/bin:/usr/bin",
-        "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
-        "config-opts": [
-            "-Dbuildtype=release"
-        ],
-        "env": {
-            "RUST_BACKTRACE": "1",
-            "RUST_LOG": "distroshelf=debug",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER": "clang",
-            "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
-            "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
-        }
-    },
     "cleanup": [
-        "/bin/vte-2.91-gtk4",
-        "/libexec/vte-urlencode-cwd",
         "/include",
         "/lib/pkgconfig",
         "/man",
@@ -48,6 +31,15 @@
         {
             "name": "vte",
             "buildsystem": "meson",
+            "cleanup": [
+                "/bin",
+                "/lib/systemd",
+                "/lib/girepository-*",
+                "/share/gir-*",
+                "/share/vala",
+                "/libexec",
+                "/etc"
+            ],
             "config-opts": [
                 "-Ddocs=false",
                 "-Dgtk3=false",
@@ -57,8 +49,12 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/vte/0.82/vte-0.82.1.tar.xz",
-                    "sha256": "79376d70402d271e2d38424418e1aea72357934d272e321e3906b71706a78e3a"
+                    "url": "https://download.gnome.org/sources/vte/0.82/vte-0.82.3.tar.xz",
+                    "sha256": "6dc6278f6fee30d07d1a03e2ba3335b1ea4e8d2956ceb59d861943115d930a85",
+                    "x-checker-data": {
+                        "type": "gnome",
+                        "name": "vte"
+                    }
                 }
             ]
         },
@@ -66,6 +62,21 @@
             "name": "distroshelf",
             "builddir": true,
             "buildsystem": "meson",
+            "build-options": {
+                "prepend-path": "/app/bin:/usr/bin",
+                "append-path": "/usr/lib/sdk/rust-stable/bin:/usr/lib/sdk/llvm21/bin",
+                "config-opts": [
+                    "-Dbuildtype=release"
+                ],
+                "env": {
+                    "RUST_BACKTRACE": "1",
+                    "RUST_LOG": "distroshelf=debug",
+                    "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+                    "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER": "clang",
+                    "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold",
+                    "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_RUSTFLAGS": "-C link-arg=-fuse-ld=/usr/lib/sdk/rust-stable/bin/mold"
+                }
+            },
             "config-opts": [
                 "-Doffline=true"
             ],
