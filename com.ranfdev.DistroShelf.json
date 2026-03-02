@@ -49,8 +49,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/vte/0.82/vte-0.82.3.tar.xz",
-                    "sha256": "6dc6278f6fee30d07d1a03e2ba3335b1ea4e8d2956ceb59d861943115d930a85",
+                    "url": "https://download.gnome.org/sources/vte/0.83/vte-0.83.91.tar.xz",
+                    "sha256": "9ee8f5011d2856c5dae80bde3c11d7fc942fa479c2e2d08b07f2a7af351379c5",
                     "x-checker-data": {
                         "type": "gnome",
                         "name": "vte"
@@ -83,8 +83,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.4.5/distroshelf-1.4.5.tar.xz",
-                    "sha256": "400bcdc32eecd49c8c8a255321d4745c15514acc270e4a99910b41241b355c49",
+                    "url": "https://github.com/ranfdev/DistroShelf/releases/download/v1.4.7/distroshelf-1.4.7.tar.xz",
+                    "sha256": "13f1fcfcf77385239530ea2d7b5eafa367d506507bd2436b4faa561999d7f94a",
                     "x-checker-data": {
                         "type": "json",
                         "url": "https://api.github.com/repos/ranfdev/DistroShelf/releases/latest",
